@@ -6,7 +6,7 @@ docker run/commit/attach/logs/login.........等 --help   搜索容器操作的�
 
 可根据docker的变迁图来理解
 
- ![image]()
+ ![image](https://github.com/p2ptest/docker-p2p-servertest/blob/master/images/4.jpg)
 
 归纳总结为：
 
@@ -23,7 +23,7 @@ docker run/commit/attach/logs/login.........等 --help   搜索容器操作的�
 
 docker images
 
- ![image]()
+ ![image](https://github.com/p2ptest/docker-p2p-servertest/blob/master/images/5.jpg)
 
 可以根据REPOSITORY来判断这个镜像是来自哪个服务器，类似regsistory.example.com:5000/repos\_name则表示的是私服。也可以看到镜像的ID和tag（通过tag可以识别仓库中不同的镜像）
 
@@ -33,7 +33,7 @@ docker search 镜像名
 
 搜索的范围是官方镜像和个人所有镜像（个人镜像由docker社区成员创建和维护，这些镜像的前缀都是用户名标记）：
 
- ![image]()
+ ![image](https://github.com/p2ptest/docker-p2p-servertest/blob/master/images/6.jpg)
 
 3. 从docker hub中下拉镜像
 
