@@ -7,7 +7,7 @@
 2. docker version查看是否安装成功，输出版本号，证明已经安装成功,(同时可以看到docker使用的go语言版本)
 
  
-
+![image](https://github.com/p2ptest/docker-p2p-servertest/blob/master/images/1.jpg)
 
 
 3. 启动
