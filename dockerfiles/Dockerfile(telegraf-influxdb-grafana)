@@ -1,0 +1,27 @@
+# Pull base image
+FROM yangliyun2016/centos6.8-bfp2p:latest
+
+MAINTAINER yangliyun2016
+
+
+
+# install telgraf influxdb grafana
+COPY telegraf-1.0.0.x86_64.rpm /tmp
+COPY influxdb-0.13.0.x86_64.rpm /tmp
+COPY grafana-3.1.1-1470047149.x86_64.rpm /tmp
+
+RUN yum localinstall -y /tmp/telegraf-1.0.0.x86_64.rpm
+RUN yum localinstall -y /tmp/influxdb-0.13.0.x86_64.rpm
+RUN yum localinstall -y /tmp/grafana-3.1.1-1470047149.x86_64.rpm
+
+RUN rm -f /tmp/*
+
+# exopse influxdb port 8083 and grafana port 3000
+EXPOSE 8083
+EXPOSE 3000
+
+# show workderictory as default command
+CMD service influxdb start   &&  service  grafana-server start  && /bin/bash
+
+
+

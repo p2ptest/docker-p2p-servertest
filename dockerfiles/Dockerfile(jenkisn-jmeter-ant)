@@ -1,0 +1,37 @@
+# Pull base image
+FROM yangliyun2016/centos6.8-bfp2p:latest
+
+MAINTAINER yangliyun2016
+
+
+# install JDK
+COPY jdk1.7.0_71 /opt/jdk1.7.0_71
+
+# install jmeter
+COPY apache-jmeter-3.1 /opt/apache-jmeter-3.1
+
+# install Ant
+COPY apache-ant-1.9.7 /opt/apache-ant-1.9.7
+
+# install tomcat and jenkins
+COPY apache-tomcat-8.5.5 /opt/apache-tomcat-8.5.5
+
+
+# set env
+ENV JAVA_HOME /opt/jdk1.7.0_71
+ENV CLASSPATH .:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $JAVA_HOME/bin:$PATH
+ENV JMETER_HOME /opt/apache-jmeter-3.1
+ENV CLASSPATH ${JMETER_HOME}/lib/ext/ApacheJMeter_core.jar:${JMETER_HOME}/lib/jorphan.jar:$JMETER_HOME/lib/logkit-2.0.jar:${CLASSPATH}
+ENV PATH ${JMETER_HOME}/bin/:${PATH}
+ENV ANT_HOME /opt/apache-ant-1.9.7
+ENV PATH $PATH:$ANT_HOME/bin
+ENV JENKINS_HOME /opt/apache-tomcat-8.5.5/webapps/jenkins
+
+EXPOSE 8080
+
+# show workderictory as default command
+ENTRYPOINT  /opt/apache-tomcat-8.5.5/bin/startup.sh  && /bin/bash  
+
+
+

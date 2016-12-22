@@ -1,0 +1,37 @@
+# Pull base image
+FROM yangliyun2016/centos6.8-bfp2p:latest
+
+MAINTAINER yangliyun2016
+
+# Install some tools
+RUN tools='pcre* lrzsz vi vim tcpdump gcc-c++ openssl openssl-devel httpd  mysql-devel libuuid-devel' \
+&& yum install -y $tools \
+&& yum clean all
+
+# ln 
+RUN cd /usr/lib64/mysql \
+&& ln -s libmysqlclient.so.16.0.0 libmysqlclient_r.a 
+
+# create network 
+RUN touch /etc/sysconfig/network 
+
+# install nginx
+RUN cd /tmp  && wget http://nginx.org/download/nginx-1.7.8.tar.gz \
+&& tar -zxvf nginx-1.7.8.tar.gz \
+&& cd nginx-1.7.8 \
+&& ./configure --prefix=/opt/nginx-1.7.8 \
+--with-http_ssl_module --with-http_spdy_module \
+--with-http_stub_status_module --with-pcre \
+&& make \
+&& make install 
+
+RUN rm -rf /tmp/*
+
+
+
+# show workderictory as default command
+WORKDIR /root
+CMD wget http://howie.wang/.bashrc && wget http://howie.wang/.bash_profile && source /root/.bashrc && source /root/.bash_profile && /bin/bash
+
+
+

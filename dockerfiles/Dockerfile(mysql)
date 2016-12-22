@@ -1,0 +1,30 @@
+# Pull base image
+FROM yangliyun2016/centos6.8-bfp2p:latest
+
+MAINTAINER yangliyun2016
+
+# Install some tools
+RUN yum install -y mysql mysql-server mysql-devel && yum clean all
+
+
+# create network and start
+RUN touch /etc/sysconfig/network 
+RUN /etc/init.d/mysqld start \
+&& mysql -e  "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION;" \
+&& mysql -e "flush privileges;" 
+
+EXPOSE 3306
+
+CMD  service mysqld start &&  /bin/bash
+#CMD  ["/usr/bin/mysqld_safe"] 
+
+
+
+
+
+
+
+
+
+
+
