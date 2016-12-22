@@ -4,7 +4,7 @@
 
 举个例子简单说明：
 
- ![image]()
+ ![image](https://github.com/p2ptest/docker-p2p-servertest/blob/master/images/2.jpg)
 
 生成镜像：
 
